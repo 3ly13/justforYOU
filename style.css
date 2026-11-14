@@ -1,0 +1,245 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: white;
+    font-family: Georgia, serif;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+/* OPENING QUESTION */
+
+#questionScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+    background: #000;
+
+    transition: opacity 1.5s ease;
+}
+
+.question-box {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.question-box h1 {
+    font-size: clamp(32px, 6vw, 58px);
+    color: #ffb6d9;
+    margin-bottom: 40px;
+
+    text-shadow:
+        0 0 10px #ff4081,
+        0 0 25px #a64dff,
+        0 0 45px #ff1744;
+}
+
+/* BUTTONS */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+button {
+    min-height: 50px;
+    min-width: 130px;
+
+    padding: 15px 30px;
+
+    border: 1px solid #ff8bc0;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        135deg,
+        #ff477e,
+        #a64dff
+    );
+
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 17px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 0 15px #ff4d94,
+        0 0 30px #a64dff;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+/* MAIN FIREWORKS SCREEN */
+
+#loveScreen {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    background: #000;
+
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+#fireworks {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+/* LOVE MESSAGE */
+
+.love-message {
+    position: absolute;
+
+    bottom: max(2%, env(safe-area-inset-bottom));
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: min(950px, 94%);
+
+    text-align: center;
+
+    padding: 12px 16px;
+
+    opacity: 0;
+    transition: opacity 3s ease;
+
+    pointer-events: none;
+}
+
+.love-message h1 {
+    font-size: clamp(21px, 4vw, 39px);
+
+    line-height: 1.3;
+
+    margin-bottom: 12px;
+
+    color: #ffd1e8;
+
+    text-shadow:
+        0 0 12px #ff4081,
+        0 0 25px #a64dff,
+        0 0 40px #ff1744;
+}
+
+.love-message p {
+    color: #ffe3f0;
+
+    font-size: clamp(11px, 1.5vw, 16px);
+
+    line-height: 1.55;
+
+    text-shadow:
+        0 0 8px rgba(255, 64, 129, 0.6);
+
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* PHONES */
+
+@media (max-width: 600px) {
+
+    .question-box h1 {
+        font-size: 34px;
+        margin-bottom: 30px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button {
+        width: min(240px, 90%);
+        font-size: 16px;
+    }
+
+    .love-message {
+        width: 96%;
+        bottom: max(1%, env(safe-area-inset-bottom));
+        padding: 8px;
+    }
+
+    .love-message h1 {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+
+    .love-message p {
+        font-size: 11px;
+        line-height: 1.4;
+    }
+}
+
+/* IPADS AND TABLETS */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .love-message {
+        width: 92%;
+    }
+
+    .love-message p {
+        font-size: 14px;
+    }
+}
+
+/* REDUCE MOTION WHEN REQUESTED */
+
+@media (prefers-reduced-motion: reduce) {
+
+    button,
+    #questionScreen,
+    #loveScreen,
+    .love-message {
+        transition-duration: 0.2s;
+    }
+
+}
